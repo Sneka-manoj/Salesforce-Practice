@@ -1,0 +1,21 @@
+trigger patientlist on Patient_Name__c (before insert,after insert)
+{
+    if(trigger.isafter){
+       if(trigger.isinsert)
+    
+    {
+       list<Patient_Name__c> accList = new List<Patient_Name__c>();
+        for(Patient_Name__c patient:trigger.new)
+        {
+            patient.Name='patient list';
+           system.debug('Im creating the patient list');  
+           accList.add(patient);
+            
+        
+        
+        }
+        
+        insert accList;
+    }
+    }
+}
