@@ -1,0 +1,32 @@
+trigger NewPatienttrigger on Patient_Name__c (before insert,after insert,before update,after update,before delete,after delete,after undelete) {
+    if(trigger.isbefore)
+    {
+        if(trigger.isinsert)
+        {
+            system.debug('Im in Before Insert');
+            
+        }
+        if(trigger.isupdate){
+          system.debug('Im in Before Update');
+        }
+       if(trigger.isdelete){
+         system.debug('Im in Before Delete');
+    }
+      
+    }
+
+if(trigger.isafter)
+{
+    if(trigger.isinsert){
+         system.debug('Im in After Insert');
+         
+        
+    }if(trigger.isupdate)
+    { system.debug('Im in After Update');
+        
+    }if(trigger.isdelete){
+        system.debug('Im in After delete');
+        
+    }
+}
+}
