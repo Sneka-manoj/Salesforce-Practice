@@ -1,0 +1,9 @@
+trigger opportunitytrigger on Opportunity (before insert,after insert) {
+    if(trigger.isbefore && trigger.isinsert){
+        for(Opportunity opp:trigger.new){
+            if( opp.LeadSource=='web'&& opp.Probability < 50){
+                opp.addError('Probability cannot be less than if leadsource is web');
+                    }
+        }
+    }
+                }
