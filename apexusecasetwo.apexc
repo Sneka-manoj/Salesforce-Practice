@@ -1,0 +1,12 @@
+public class apexusecasetwo {
+    public static Decimal calculate(Decimal principle,Decimal interest,Integer timeinyear){
+        if(principle != null && interest !=null && timeinyear != null){
+            Decimal simpleinterest = (principle * interest  * timeinyear)/100;
+            return simpleinterest;
+        }
+        Return 0;
+    }
+    
+        
+
+}
