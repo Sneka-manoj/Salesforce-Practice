@@ -1,0 +1,20 @@
+trigger Marksheettrigger on Student_Name__c (before insert,after insert,before update,after update,before delete,after delete,after undelete) {
+    if(trigger.isafter)
+    {
+        if(trigger.isinsert)  
+        {
+          system.debug('Im in after insert');
+            {
+                for(Student_Name__c stu:trigger.new)
+                {
+                  Result_Student__c result =new Result_Student__c();
+                  result.Name='Final exam';
+                  insert  result;
+                  
+               
+                }
+            }
+        }
+    }
+
+}
