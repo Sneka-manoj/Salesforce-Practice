@@ -1,0 +1,24 @@
+trigger Studentsagetrigger on Student_Name__c(Before insert,After insert,before update,after update,before delete,after delete,after undelete) 
+{
+	if(Trigger.isinsert && Trigger.isafter)
+    {
+        studenttriggerclass.studenttriggerafterinsert();
+        List<Student_Name__c> Studentage_List = New List<Student_Name__c>();
+        
+       for(Student_Name__c stu:Trigger.new)
+       {
+            system.debug('The student age is 6 the grade will PreKg');
+            if(stu.Age__c==6)
+            {
+             stu.Grade__c='UKG';  
+               
+            }
+           	else
+            {
+                 stu.Grade__c='Pre Kg';
+            }       
+          Studentage_List.add(stu);          
+       }
+       update Studentage_List;  
+   }   
+}
