@@ -1,0 +1,22 @@
+trigger studentTriggerapex on Student_Name__c (before insert,after insert,before update,after update,before delete,after delete,after undelete)
+{
+   if(Trigger.isbefore) 
+   {
+       if(trigger.isbefore)
+       {
+         system.debug('Im in before insert');
+           list<Mark_sheet__c> marksheetlist=new  list<Mark_sheet__c>();
+           for(Student_Name__c stu:trigger.new)
+           {
+             Mark_sheet__c marksheet=new Mark_sheet__c();
+             marksheet.Name='Test result';
+             system.debug('Im in before insert' + marksheet);
+             marksheetlist.add(marksheet);
+             
+           
+       } 
+        insert marksheetlist; 
+   }
+
+}
+}
