@@ -1,0 +1,19 @@
+public class apexnewcontact {
+    public static void createnewcontact(string firstName,String lastname,string emailAddress)
+    {
+        List<contact> conTolist = new List<contact>();
+        contact concreate = new contact();
+            if(!string.isBlank(LastName))
+            {
+             concreate.FirstName = firstName;
+             concreate.LastName = lastName;
+             concreate.Email = emailAddress;
+             conTolist.add(concreate);
+            }
+             if(conTolist.size() > 0)
+             {
+             
+                 insert conTolist;
+    }
+        }
+    }
