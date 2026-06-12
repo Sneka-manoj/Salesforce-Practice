@@ -1,0 +1,13 @@
+public with sharing class StudentController {
+
+    @AuraEnabled(cacheable=true)
+    public static List<Student_Name__c> getStudents() {
+        return [
+            SELECT Id, Name
+            FROM Student_Name__c
+             LIMIT 5
+           
+           
+        ];
+    }
+}
