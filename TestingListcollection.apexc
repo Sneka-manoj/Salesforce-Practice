@@ -1,0 +1,16 @@
+public class TestingListcollection {
+    public static void HandlerTestingList(){
+        List<string> MyFavBook=New  List<string>{'Harry potter'};
+        List<Integer> MyFavNumber=New  List<Integer>{11,22,888};
+            
+            Account accRec = New Account(); 
+            List<Account> MyAccount=New List<Account>{accRec};
+               
+              system.debug('My FavBook Is: '+MyFavBook);
+              system.debug('My FavNumber is: '+MyFavNumber); 
+              system.debug('Im In Account Object: '+ MyAccount);                                     
+      
+        
+    }
+
+}
