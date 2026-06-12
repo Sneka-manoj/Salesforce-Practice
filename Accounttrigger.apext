@@ -1,0 +1,14 @@
+trigger Accounttrigger on Account (before insert) {
+    if(Trigger.isbefore && Trigger.isinsert)
+    {
+        for( Account acc:Trigger.new) 
+        {
+            if(acc.Industry=='Banking' && acc.Rating=='Hot'&& acc.Ownership=='Private' )
+            {
+             acc.addError('You cannot change this default stauts');  
+                
+            }
+        }  
+    }
+
+}
