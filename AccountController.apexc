@@ -1,0 +1,19 @@
+public with sharing class AccountController {
+
+    @AuraEnabled(cacheable=true)
+    public static Account getAccount(Id recordId){
+        return [
+            SELECT Id, Name, Type, Industry, AnnualRevenue,
+                   Cash_amount__c, Region__c, Customer_Tier__c, SLA__c
+            FROM Account
+            WHERE Id = :recordId
+        ];
+    }
+
+    @AuraEnabled
+    public static void updateRevenue(Id recordId, Decimal revenue){
+        Account acc = new Account(Id = recordId);
+        acc.AnnualRevenue = revenue;
+        update acc;
+    }
+}
