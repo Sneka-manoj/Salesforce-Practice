@@ -1,0 +1,27 @@
+public class ContactAsyncProcessor {
+
+    @AuraEnabled
+    public static void processContacts(List<Id> contactIds) {
+        System.enqueueJob(new ContactQueueable(contactIds));
+    }
+
+    public class ContactQueueable implements Queueable {
+        private List<Id> contactIds;
+
+        public ContactQueueable(List<Id> contactIds) {
+            this.contactIds = contactIds;
+        }
+
+        public void execute(QueueableContext context) {
+            List<Contact> contacts = [
+                SELECT Id, Description FROM Contact WHERE Id IN :contactIds
+            ];
+
+            for (Contact c : contacts) {
+                c.Description = 'Processed asynchronously';
+            }
+
+            update contacts;
+        }
+    }
+}
