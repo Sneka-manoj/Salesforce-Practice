@@ -1,0 +1,8 @@
+trigger Accounttriggerlist on Account (After update) {
+for (Account acc : Trigger.new) {
+List<Contact> contacts = [SELECT Id, Description FROM Contact WHERE AccountId = :acc.Id];
+for (Contact con : contacts) {
+con.Description = 'Updated';
+update con; // DML operation inside loop, also inefficient
+}}
+}
